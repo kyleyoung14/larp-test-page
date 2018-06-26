@@ -2,7 +2,7 @@ var http = require('http')
   , fs   = require('fs')
   , url  = require('url')
   , qs   = require('querystring')
-  , prequireort = 8080;
+  , port = 8080;
 
 // Add more movies! (For a technical challenge, use a file, or even an API!)
 // var text = fs.readFileSync("./movies.txt");
@@ -31,6 +31,9 @@ var server = http.createServer (function (req, res) {
     case '/readme.md':
       sendFile(res, 'README.md', 'text/plain')
       break
+    case '/img/leafyBackground.jpg':
+      sendFile(res,'public/img/leafyBackground.jpg', 'image/jpeg')
+      break
     case '/css/style.css':
       sendFile(res, 'public/css/style.css', 'text/css')
       break
@@ -49,7 +52,7 @@ var server = http.createServer (function (req, res) {
 
 })
 
-server.listen(process.env.PORT || port)
+server.listen(port)
 console.log('listening on 8080')
 
 // subroutines

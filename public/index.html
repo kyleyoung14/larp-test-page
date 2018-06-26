@@ -1,51 +1,61 @@
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-		<title>The Random Forum for Random Things</title>
-	</head>
-	<body>
-		<script src="http://underscorejs.org/underscore-min.js"></script>
-		<h1>The Random Forum for Random Things</h1>
-		<form action="/add" method="POST" id="Add" onsubmit="return false;">
-		<input type="text" class="addBar" placeholder = "What would you like to post?" name="add" id="postAdd"/>
-		<button class = "btn btn-success addButton" type="submit" id="addButton" onclick="addPost();">Add</button>
-		</form>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
+	<title>Ebonrock</title>
+</head>
+<body>
+	<script src="http://underscorejs.org/underscore-min.js"></script>
+	<h1>Ebonrock</h1>
+	<div id="loginBox">
+		
+			
 		<div id="wrap">
-		    <div id="left_col">
-		        <ul class="list-group" id="fullTaskList">
-		        </ul>
-		    </div>
-		    <div id="right_col">
-		    	<img src="" id="pic">
-		    	<div id="userInfo">
-			    	<p id="userID">User ID: 00000</p>
-			    	<p id="postNum">Total Posts: 0</p>
-			    	<p id="personalPostNum">Your Posts: 0</p>
-			    </div>
-		    </div>
-		    <script src="js/scripts.js"></script>
-		    <script charset="UTF-8">
-		    	getJSON('/posts');
+			<div id="left_col">
+					<fieldset>
+					<legend>Sign in</legend>
+					<form action="/login" method="POST" id="Login" onsubmit="return false;">
+						<label for="username">Username:</label>
+						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="postLogin" required/>
+						<label for="password">Password:</label>
+						<input type="password" id="password" placeholder = "Password" name="password" required><p></P>
+						<button class = "btn btn-primary addButton" type="submit" id="loginButton" onclick="addPost();">Login</button>
+					</form>
+					<ul class="list-group" id="fullTaskList">
+					</ul>
+				</div>
+				<div id="right_col">
+					<img src="" id="pic">
+					<div id="userInfo">
 
-		    	highlight()
+					</div>
+				</div>
+				<script src="js/scripts.js"></script>
+				<script charset="UTF-8">
+				getJSON('/posts');
 
-		    	addClick()
+				highlight()
 
-		    	scrollInit()
+				addClick()
 
-		    	userClick()
+				scrollInit()
 
-		    	if(!document.cookie){
-			    	console.log('cookie='+document.cookie)
+				userClick()
+
+				if(!document.cookie){
+					console.log('cookie='+document.cookie)
 			    	// location.reload()
 			    	done = 1
 			    }
-		    </script>
+			    </script>
+			</fieldset>
 		</div>
-	</body>
+	</div>
+	
+</div>
+</body>
 </html>
 
 

@@ -1,20 +1,67 @@
 body {background-color:aliceblue; 
 	color:gray;
 	font-family: 'Libre Baskerville', serif;
-	text-align: center;}
+	text-align: center;
+	background-image: url("/img/leafyBackground.jpg");
+	background-repeat: repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;}
 
-h1 {font-family: 'Luckiest Guy', cursive;
-	font-size: 75;
-	color:steelblue;}
+h1 {font-family: 'IM Fell English SC', serif;
+	font-size: 200;
+	color:#654321;}
 
 h2 {color:steelblue;}
 
-.name {font-size: xx-large;}
 
-.resize:hover{max-width: 40%;
-			max-height: 40%;}
 
-.time {color:grey;
-	font-style: italic;}
+#loginBox{
+	height:300px;
+  width: 500px;
+  background-color: darkblue;
+  border-radius: 10px;
+  padding:1em;
+  /*position: absolute;*/
+  /*float: right;*/
+  color: white;
+  box-shadow: 0 0 30px black;
+  margin: 0 auto;
+}
 
-#movieList {list-style-type: none;}
+#wrap {
+   width:100%;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:50%;
+}
+#right_col {
+   float:right;
+   width:50%;
+   height:150px;
+   color:white;
+}
+
+legend {
+	background-color: white;
+	color: darkblue;
+	padding:3px 6px;
+}
+
+label {
+	display: inline-block;
+	font-size: .9rem;
+	width: 35%;
+}
+
+input {
+	margin: .4rem 0;
+	font-size: 12;
+}
+
+input[type="text"],
+input[type="password"]{
+	width: 60%;
+}
