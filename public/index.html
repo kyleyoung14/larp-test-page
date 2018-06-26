@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+		<title>The Random Forum for Random Things</title>
+	</head>
+	<body>
+		<script src="http://underscorejs.org/underscore-min.js"></script>
+		<h1>The Random Forum for Random Things</h1>
+		<form action="/add" method="POST" id="Add" onsubmit="return false;">
+		<input type="text" class="addBar" placeholder = "What would you like to post?" name="add" id="postAdd"/>
+		<button class = "btn btn-success addButton" type="submit" id="addButton" onclick="addPost();">Add</button>
+		</form>
+		<div id="wrap">
+		    <div id="left_col">
+		        <ul class="list-group" id="fullTaskList">
+		        </ul>
+		    </div>
+		    <div id="right_col">
+		    	<img src="" id="pic">
+		    	<div id="userInfo">
+			    	<p id="userID">User ID: 00000</p>
+			    	<p id="postNum">Total Posts: 0</p>
+			    	<p id="personalPostNum">Your Posts: 0</p>
+			    </div>
+		    </div>
+		    <script src="js/scripts.js"></script>
+		    <script charset="UTF-8">
+		    	getJSON('/posts');
+
+		    	highlight()
+
+		    	addClick()
+
+		    	scrollInit()
+
+		    	userClick()
+
+		    	if(!document.cookie){
+			    	console.log('cookie='+document.cookie)
+			    	// location.reload()
+			    	done = 1
+			    }
+		    </script>
+		</div>
+	</body>
+</html>
+
+
+
+
