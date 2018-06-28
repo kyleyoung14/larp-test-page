@@ -75,3 +75,9 @@ input[type="password"] {
 {
 	color: red;
 }
+
+#mainTitle
+{
+	-webkit-text-stroke: 1px white;
+	paint-order: stroke fill;
+}
