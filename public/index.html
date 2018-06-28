@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
 <head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
@@ -7,54 +8,127 @@
 	<title>Ebonrock</title>
 </head>
 <body>
-	<script src="http://underscorejs.org/underscore-min.js"></script>
-	<h1>Ebonrock</h1>
-	<div id="loginBox">
-		
-			
-		<div id="wrap">
-			<div id="left_col">
-					<fieldset>
-					<legend>Sign in</legend>
-					<form action="/login" method="POST" id="Login" onsubmit="return false;">
-						<label for="username">Username:</label>
-						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="postLogin" required/>
-						<label for="password">Password:</label>
-						<input type="password" id="password" placeholder = "Password" name="password" required><p></P>
-						<button class = "btn btn-primary addButton" type="submit" id="loginButton" onclick="addPost();">Login</button>
-					</form>
-					<ul class="list-group" id="fullTaskList">
-					</ul>
-				</div>
-				<div id="right_col">
-					<img src="" id="pic">
-					<div id="userInfo">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Home</a>
+		<div>
+			<button class="signUp btn btn-dark" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+			<button class="signIn btn btn-dark" type="button" data-toggle="modal" data-target="#loginModal">Sign In</button>
+		</div>
+		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button> -->
 
+		<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
 					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div> -->
+	</nav>
+	<!-- Sign Up Modal -->
+	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="Sign Up Modal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="Sign Up Modal">Enter Information</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-				<script src="js/scripts.js"></script>
-				<script charset="UTF-8">
-				getJSON('/posts');
-
-				highlight()
-
-				addClick()
-
-				scrollInit()
-
-				userClick()
-
-				if(!document.cookie){
-					console.log('cookie='+document.cookie)
-			    	// location.reload()
-			    	done = 1
-			    }
-			    </script>
-			</fieldset>
+				<div class="modal-body">
+					<form action="/signup" method="POST" id="Login" onsubmit="return false;">
+						<label for="firstName">First Name:<span class="req">*</span></label>
+						<input type="text" class="nameBar" placeholder = "John" name="firstName" id="firstName" required maxLength="50"/>
+						<label for="lastName">Last Name:<span class="req">*</span></label>
+						<input type="text" class="nameBar" placeholder = "Smith" name="lastName" id="lastName" required maxLength="50"/>
+						<label for="username">Username:<span class="req">*</span></label>
+						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="username" required maxLength="100"/>
+						<label for="confUsername">Confirm Username:<span class="req">*</span></label>
+						<input type="text" class="loginBar" placeholder = "Username/email" name="confUsername" id="confUsername" required maxLength="100"/>
+						<label for="password">Password:<span class="req">*</span></label>
+						<input type="password" id="password" placeholder = "Password" name="password" required maxLength="50">
+						<label for="confPassword">Confirm Password:<span class="req">*</span></label>
+						<input type="password" id="confPassword" placeholder = "Password" name="password" required maxLength="50">
+						<label for="imgInput">Image of Yourself:</label><p>
+						<input type="file" accept=".jpg,.bmp" name="imgInput" id="imgInput">
+						<!-- <button type="button" id="imgBrowse" class="btn btn-success" onclick="chooseFile();">Browse</button> -->
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="signUpButton" class="btn btn-primary" onclick="signUpPost();">Sign Up</button>
+				</div>
+			</div>
 		</div>
 	</div>
-	
-</div>
+
+	<!-- Login Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login Modal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="Login Modal">Enter Information</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="/login" method="POST" id="Login" onsubmit="return false;">
+						<label for="username">Username:</label>
+						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="username" required maxLength="100"/>
+						<label for="password">Password:</label>
+						<input type="password" id="password" placeholder = "Password" name="password" required maxLength="50">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="signUpButton" class="btn btn-primary" onclick="signUpPost();">Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h1>Ebonrock</h1>
+	<script src="js/scripts.js"></script>
+	<script charset="UTF-8">
+	getJSON('/posts');
+
+	highlight()
+
+	addClick()
+
+	scrollInit()
+
+	userClick()
+
+	if(!document.cookie){
+		console.log('cookie='+document.cookie)
+		// location.reload()
+		done = 1
+	}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 </html>
 

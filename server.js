@@ -31,8 +31,8 @@ var server = http.createServer (function (req, res) {
     case '/readme.md':
       sendFile(res, 'README.md', 'text/plain')
       break
-    case '/img/leafyBackground.jpg':
-      sendFile(res,'public/img/leafyBackground.jpg', 'image/jpeg')
+    case '/img/trainBackground.jpg':
+      sendFile(res,'public/img/trainBackground.jpg', 'image/jpeg')
       break
     case '/css/style.css':
       sendFile(res, 'public/css/style.css', 'text/css')

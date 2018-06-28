@@ -2,7 +2,7 @@ body {background-color:aliceblue;
 	color:gray;
 	font-family: 'Libre Baskerville', serif;
 	text-align: center;
-	background-image: url("/img/leafyBackground.jpg");
+	background-image: url("/img/trainBackground.jpg");
 	background-repeat: repeat;
 	background-position: center;
 	background-attachment: fixed;
@@ -62,6 +62,16 @@ input {
 }
 
 input[type="text"],
-input[type="password"]{
-	width: 60%;
+input[type="password"] {
+	width: 65%;
+}
+
+.signIn
+{
+	float: right;
+}
+
+.req
+{
+	color: red;
 }
