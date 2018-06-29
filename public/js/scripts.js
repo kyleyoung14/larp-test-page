@@ -1,25 +1,58 @@
-// // Add some Javascript code here, to run on the front end.
-// window.onload = function(){
-// 	document.getElementById("Add").onsubmit = handleAdd2
-// 	document.getElementById("Remove").onsubmit = function(){
-// 		console.log("remove query");
-// 	}
-// }
+//
+// Functions run at loading of page
+//
+function setValidators()
+{
+	var userConf = document.getElementById("confUsername");
+	userConf.addEventListener("input",function (event) {
+		var username = document.getElementById("username");
+		if(username.value == event.target.value)
+		{
+			event.target.style.outlineColor = "green";
+			event.target.style.backgroundColor = "green";
+		}
+		else
+		{
+			event.target.style.outlineColor = "red";
+			event.target.style.backgroundColor = "red";
+		}
+	});
 
 
+	var passwordConf = document.getElementById("confPassword");
+	passwordConf.addEventListener("input",function (event) {
+		var password = document.getElementById("password");
+		if(password.value == event.target.value)
+		{
+			event.target.style.outlineColor = "green";
+			event.target.style.backgroundColor = "green";
+		}
+		else
+		{
+			event.target.style.outlineColor = "red";
+			event.target.style.backgroundColor = "red";
+		}
+	});
+}
 
-// function handleAdd2 (submitEvent) {
-//   var name = document.querySelector('input').value
-//   request({
-//     uri: "cs4241-a4-kyleyoung14.herokuapp.com/add",
-//     body: name,
-//     method: "POST"
-//   }, postResponse)
-// }
 
-// function postResponse (err, response, body) {
-//   var statusMessage = document.querySelector('.status')
-//   if (err) return statusMessage.value = err
-//   statusMessage.value = body
-// }
+function setClearClosedModals()
+{
+	$(".modal").on("hidden.bs.modal", function(){
+    	$("#CreateAccountForm")[0].reset();
+    	$("#LoginForm")[0].reset();
 
+    	$("#confPassword").css("background-color",'white');
+		$("#confUsername").css("background-color",'white');
+	});
+}
+
+
+//
+// Functions activated from interface
+//
+function createAccountPost()
+{
+	// $(".modal").modal('hide');
+	
+}

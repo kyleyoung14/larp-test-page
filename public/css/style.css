@@ -53,7 +53,7 @@ legend {
 label {
 	display: inline-block;
 	font-size: .9rem;
-	width: 35%;
+	width: 30%;
 }
 
 input {
@@ -64,6 +64,8 @@ input {
 input[type="text"],
 input[type="password"] {
 	width: 65%;
+	/*background-color: 343a40;*/
+	/*color: gray;*/
 }
 
 .signIn
@@ -80,4 +82,11 @@ input[type="password"] {
 {
 	-webkit-text-stroke: 1px white;
 	paint-order: stroke fill;
+}
+
+.modal-dark
+{
+	/*background-color: #343a40;*/
+	background-color: #444;
+	/*color: white;*/
 }

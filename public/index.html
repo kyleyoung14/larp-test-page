@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
@@ -11,8 +11,8 @@
 	<nav class="navbar navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Home</a>
 		<div>
-			<button class="signUp btn btn-dark" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
-			<button class="signIn btn btn-dark" type="button" data-toggle="modal" data-target="#loginModal">Sign In</button>
+			<button class="signUp btn btn-dark" type="button" data-toggle="modal" data-target="#createAccountModal">Create Account</button>
+			<button class="signIn btn btn-dark" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
 		</div>
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -48,17 +48,17 @@
 		</div> -->
 	</nav>
 	<!-- Sign Up Modal -->
-	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="Sign Up Modal" aria-hidden="true">
+	<div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog" aria-labelledby="Create Account Modal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
+			<div class="modal-content modal-dark">
 				<div class="modal-header">
-					<h5 class="modal-title" id="Sign Up Modal">Enter Information</h5>
+					<h5 class="modal-title" id="Create Account Modal">Enter Information</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/signup" method="POST" id="Login" onsubmit="return false;">
+					<form action="/createAccount" method="POST" id="CreateAccountForm" onsubmit="return false;">
 						<label for="firstName">First Name:<span class="req">*</span></label>
 						<input type="text" class="nameBar" placeholder = "John" name="firstName" id="firstName" required maxLength="50"/>
 						<label for="lastName">Last Name:<span class="req">*</span></label>
@@ -71,13 +71,13 @@
 						<input type="password" id="password" placeholder = "Password" name="password" required maxLength="50">
 						<label for="confPassword">Confirm Password:<span class="req">*</span></label>
 						<input type="password" id="confPassword" placeholder = "Password" name="password" required maxLength="50">
-						<label for="imgInput">Image of Yourself:</label><p>
+						<label for="imgInput">Image of Yourself:</label>
 						<input type="file" accept=".jpg,.bmp" name="imgInput" id="imgInput">
 						<!-- <button type="button" id="imgBrowse" class="btn btn-success" onclick="chooseFile();">Browse</button> -->
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="signUpButton" class="btn btn-primary" onclick="signUpPost();">Sign Up</button>
+					<button type="submit" id="signUpButton" class="btn btn-dark" onclick="createAccountPost();">Create Account</button>
 				</div>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 	<!-- Login Modal -->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login Modal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
+			<div class="modal-content modal-dark">
 				<div class="modal-header">
 					<h5 class="modal-title" id="Login Modal">Enter Information</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -94,31 +94,28 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/login" method="POST" id="Login" onsubmit="return false;">
-						<label for="username">Username:</label>
-						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="username" required maxLength="100"/>
-						<label for="password">Password:</label>
-						<input type="password" id="password" placeholder = "Password" name="password" required maxLength="50">
+					<form action="/login" method="POST" id="LoginForm" onsubmit="return false;">
+						<label for="loginUsername">Username:</label>
+						<input type="text" class="loginBar" placeholder = "Username/email" name="username" id="loginUsername" required maxLength="100"/>
+						<label for="loginPassword">Password:</label>
+						<input type="password" id="loginPassword" placeholder = "Password" name="password" required maxLength="50">
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="signUpButton" class="btn btn-primary" onclick="signUpPost();">Login</button>
+					<button type="submit" id="signUpButton" class="btn btn-dark" onclick="signUpPost();">Login</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<h1 id="mainTitle">Ebonrock</h1>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<script charset="UTF-8">
-	getJSON('/posts');
+	setValidators();
+	setClearClosedModals();
+	
 
-	highlight()
-
-	addClick()
-
-	scrollInit()
-
-	userClick()
 
 	if(!document.cookie){
 		console.log('cookie='+document.cookie)
